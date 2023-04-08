@@ -18,6 +18,11 @@
         .btn {
             margin: 2em;
         }
+
+        /* .img-fluid {
+            max-width: 100%;
+            height: auto;
+        } */
     </style>
 </head>
 
@@ -28,7 +33,7 @@
         <img src="image1.jpg" id="banner_image" class="img-fluid" />
     </div>
     <div class="container">
-        <button type="button" class="btn btn-primary btn-lg">Add Product</button>
+        <button type="button" class="btn btn-primary btn-lg" onclick="addProduct()">Add Product</button>
     </div>
 
     <script>
@@ -42,6 +47,33 @@
 
         document.getElementById("banner_image").src = image;
         document.getElementById("text").innerHTML = text;
+
+        function addProduct() {
+            let e_code = "banner_promo_add_product"
+            let e_data = text
+
+            window.parent.postMessage(JSON.stringify({
+                event_code: "ym-client-event",
+                data: JSON.stringify({
+                    event: {
+                        code: e_code,
+                        data: e_data
+                    },
+                }),
+            }), "*");
+
+            console.log(JSON.stringify({
+                event_code: "ym-client-event",
+                data: JSON.stringify({
+                    event: {
+                        code: e_code,
+                        data: e_data
+                    },
+                }),
+            }))
+        }
+
+
     </script>
 
 
