@@ -11,22 +11,13 @@
     <style>
         body {
             text-align: center;
-            padding: 150px;
+            padding: 2em;
+            background-color: #F4F4F4;
         }
 
-        /* h1 {
-            font-size: 50px;
-        } */
-
-        body {
-            font: 20px Helvetica, sans-serif;
-            color: #333;
+        .btn {
+            margin: 2em;
         }
-
-        /* .cont {
-            max-width: 650px;
-            margin: 0 auto;
-        } */
     </style>
 </head>
 
@@ -34,10 +25,10 @@
 
 <body>
     <div class="container">
-        <div class="text-justify cont">
-            <!-- <h1 id="image">We'll be back soon!</h1> -->
-            <img src="image1.jpg" id="banner_image" />
-        </div>
+        <img src="image1.jpg" id="banner_image" class="img-fluid" />
+    </div>
+    <div class="container">
+        <button type="button" class="btn btn-primary btn-lg">Add Product</button>
     </div>
 
     <script>
@@ -46,24 +37,14 @@
         let str1 = str[1];
         let str2 = str[2];
 
-        //         let title = str1.split("&text")[0];
-        //         let text = str2;
-
-        let image = decodeURIComponent(str1.split("&image")[0]);
+        let image = decodeURIComponent(str1.split("&text")[0]);
         let text = decodeURIComponent(str2);
-        //         text = text.replace("&frameId", "");
 
-        // document.getElementById("image").innerHTML = title;
         document.getElementById("banner_image").src = image;
         document.getElementById("text").innerHTML = text;
     </script>
 
-    <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-        </script> -->
-
 
 </body>
-<!-- <grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration> -->
 
 </html>
