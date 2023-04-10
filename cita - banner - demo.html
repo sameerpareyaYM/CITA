@@ -52,18 +52,18 @@
             let e_code = "banner_promo_add_product"
             let e_data = text
 
-//             window.parent.postMessage(JSON.stringify({
-//                 event_code: "ym-client-event",
-//                 data: JSON.stringify({
-//                     event: {
-//                         code: e_code,
-//                         data: e_data
-//                     },
-//                 }),
-//             }), "*");
+            window.parent.postMessage(JSON.stringify({
+                event_code: "ym-client-event",
+                data: JSON.stringify({
+                    event: {
+                        code: e_code,
+                        data: e_data
+                    },
+                }),
+            }), "*");
             
-            let msg = e_code + text
-            window.parent.postMessage(JSON.stringify(msg), "*");
+//             let msg = e_code + text
+//             window.parent.postMessage(JSON.stringify(msg), "*");
 
             console.log(JSON.stringify({
                 event_code: "ym-client-event",
