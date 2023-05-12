@@ -1,0 +1,123 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+        integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <title>CITA</title>
+    <style>
+        body {
+            text-align: center;
+            padding: 2em;
+            background-color: #F4F4F4;
+        }
+
+        .btn {
+            margin: 2em;
+        }
+
+        /* .img-fluid {
+            max-width: 100%;
+            height: auto;
+        } */
+    </style>
+</head>
+
+<!-- <body data-new-gr-c-s-check-loaded="14.1086.0" data-gr-ext-installed=""> -->
+
+<body>
+
+    <!-- <div class="container">
+        <img src="image1.jpg" id="banner_image" class="img-fluid" />
+    </div>
+    <div class="container">
+        <button type="button" class="btn btn-primary btn-lg" onclick="addProduct()">Add Product</button>
+    </div> -->
+
+    <div id="banner">
+    </div>
+
+    <script>
+        // let url = window.location.href;
+        // let url = `https://sameerpareyaym.github.io/CITA/cita - banner - demo.html?image=${image}&text=${text}`
+        let url = `https://sameerpareyaym.github.io/CITA/cita - banner - demo.html?image=https://cdn.yellowmessenger.com/QtpwyJPaJJfS1683698447647.jpg,https://cdn.yellowmessenger.com/6p4coe43ruxH1683698527021.jpg,https://cdn.yellowmessenger.com/GNXWXPegboPo1683698560283.jpg&text=DSS12; 3; SAH12; 3;,DSS12; 2; SAH12; 2;,DSS12; 1; SAH12; 1;`
+        let str = url.split("=");
+        let str1 = str[1];
+        let str2 = str[2];
+
+        let image = decodeURIComponent(str1.split("&text")[0]);
+        let text = decodeURIComponent(str2);
+
+        console.log("--IMAGE--", image);
+        console.log("--TEXT--", text);
+
+        let imageArr = image.split(",");
+        let textArr = text.split(",");
+
+        console.log("--IMAGE ARR--", imageArr);
+        console.log("--TEXT ARR--", textArr);
+
+        let n = imageArr.length;
+        let htmlStr = "";
+
+        for (let i = 0; i < n; i++) {
+            let img = imageArr[i];
+            let txt = textArr[i];
+
+            let e_code = "banner_promo_add_product";
+            let e_data = textArr[i];
+
+            htmlStr += `<div class="container">
+            <img src="${img}" class="img-fluid" />
+        </div>
+        <div class="container">
+            <button type="button" class="btn btn-primary btn-lg" onclick="addProduct(${e_code},${e_data})">Add Product</button>
+        </div>`;
+        }
+
+        document.getElementById("banner").innerHTML = htmlStr;
+
+        // document.getElementById("banner_image").src = image;
+        // document.getElementById("text").innerHTML = text;
+
+        // let e_code = "banner_promo_add_product"
+        // let e_data = text
+
+        function addProduct(e_code, e_data) {
+            // let e_code = "banner_promo_add_product"
+            // let e_data = text
+
+            window.parent.postMessage(JSON.stringify({
+                event_code: "ym-client-event",
+                data: JSON.stringify({
+                    event: {
+                        code: e_code,
+                        data: e_data
+                    },
+                }),
+            }), "*");
+
+            //             let msg = e_code + text
+            //             window.parent.postMessage(JSON.stringify(msg), "*");
+
+            console.log(JSON.stringify({
+                event_code: "ym-client-event",
+                data: JSON.stringify({
+                    event: {
+                        code: e_code,
+                        data: e_data
+                    },
+                }),
+            }))
+        }
+
+
+    </script>
+
+
+</body>
+
+</html>
