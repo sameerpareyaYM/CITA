@@ -65,7 +65,7 @@
             return randomNumber;
         }
 
-        function sendAPIRequest() {
+        async function sendAPIRequest() {
             var url = 'https://app.yellow.ai/api/engagements/notifications/v2/push?bot=x1606282930507';
             var apiKey = 'XHWHa4T9sYAy8AYWyL7sCL2Jie73UMyqZyD35ylV';
 
@@ -83,7 +83,7 @@
                 }
             };
 
-            fetch(url, {
+            await fetch(url, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
