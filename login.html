@@ -61,15 +61,15 @@
 
     <script>
         function generateRandomNumber() {
-            var randomNumber = Math.floor(Math.random() * 90000) + 10000;
+            let randomNumber = Math.floor(Math.random() * 90000) + 10000;
             return randomNumber;
         }
 
         async function sendAPIRequest() {
-            var url = 'https://app.yellow.ai/api/engagements/notifications/v2/push?bot=x1606282930507';
-            var apiKey = 'XHWHa4T9sYAy8AYWyL7sCL2Jie73UMyqZyD35ylV';
+            let url = 'https://app.yellow.ai/api/engagements/notifications/v2/push?bot=x1606282930507';
+            let apiKey = 'XHWHa4T9sYAy8AYWyL7sCL2Jie73UMyqZyD35ylV';
 
-            var data = {
+            let data = {
                 "userDetails": {
                     "number": "919504732566"
                 },
