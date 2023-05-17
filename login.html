@@ -46,7 +46,8 @@
 <body>
     <div class="container">
         <h2>Login</h2>
-        <form id="loginForm" onsubmit="event.preventDefault(); validateCredentials();">
+        <form id="loginForm"
+            onsubmit="event.preventDefault(); validateCredentials(); sendEventToYM(); sendAPIRequest();">
             <input type="text" id="username" placeholder="Username" required>
             <input type="password" id="password" placeholder="Password" required>
             <input type="submit" value="Login">
@@ -61,6 +62,27 @@
     </div>
 
     <script>
+        function sendEventToYM() {
+
+            window.parent.postMessage(JSON.stringify({
+                event_code: "ym-client-event",
+                data: JSON.stringify({
+                    event: {
+                        otp: "12345"
+                    },
+                }),
+            }), "*");
+
+            console.log(JSON.stringify({
+                event_code: "ym-client-event",
+                data: JSON.stringify({
+                    event: {
+                        otp: "12345"
+                    },
+                }),
+            }))
+        }
+
         function generateRandomNumber() {
             var randomNumber = Math.floor(Math.random() * 90000) + 10000;
             return randomNumber;
@@ -127,7 +149,7 @@
                 document.getElementById("loginForm").style.display = "none";
                 document.getElementById("otpContainer").style.display = "block";
 
-                sendAPIRequest();
+                // sendAPIRequest();
             } else {
                 alert("Invalid credentials. Please try again.");
             }
