@@ -164,6 +164,9 @@
 
         function validateOTP() {
             const otp = document.getElementById("otp").value;
+            
+            console.log(typeof otp, "--OTP TYPE--")
+            console.log(typeof otp_value, "--OTP VALUE TYPE--")
 
             // Generate random 5 digit OTP value
             // const otp_value = generateRandomNumber()
@@ -175,7 +178,7 @@
             // Replace the condition below with your own logic for validating the OTP
 
 //             if (otp === "12345") {
-                if (otp === otp_value) {
+                if (otp == otp_value) {
                 alert("Login successful!");
                 // You can redirect the user to another page or perform other actions here
             } else {
