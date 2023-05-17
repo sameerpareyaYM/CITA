@@ -3,6 +3,7 @@
 
 <head>
     <title>Login Page</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -45,7 +46,7 @@
 <body>
     <div class="container">
         <h2>Login</h2>
-        <form id="loginForm" onsubmit="event.preventDefault(); validateCredentials(); sendAPIRequest();">
+        <form id="loginForm" onsubmit="event.preventDefault(); validateCredentials();">
             <input type="text" id="username" placeholder="Username" required>
             <input type="password" id="password" placeholder="Password" required>
             <input type="submit" value="Login">
@@ -61,13 +62,13 @@
 
     <script>
         function generateRandomNumber() {
-            let randomNumber = Math.floor(Math.random() * 90000) + 10000;
+            var randomNumber = Math.floor(Math.random() * 90000) + 10000;
             return randomNumber;
         }
 
         async function sendAPIRequest() {
-            let url = 'https://app.yellow.ai/api/engagements/notifications/v2/push?bot=x1606282930507';
-            let apiKey = 'XHWHa4T9sYAy8AYWyL7sCL2Jie73UMyqZyD35ylV';
+            const url = 'https://app.yellow.ai/api/engagements/notifications/v2/push?bot=x1606282930507';
+            const apiKey = 'XHWHa4T9sYAy8AYWyL7sCL2Jie73UMyqZyD35ylV';
 
             let data = {
                 "userDetails": {
@@ -83,18 +84,33 @@
                 }
             };
 
-            await fetch(url, {
-                method: 'POST',
+            // await fetch(url, {
+            //     method: 'POST',
+            //     headers: {
+            //         'Content-Type': 'application/json',
+            //         'x-api-key': 'XHWHa4T9sYAy8AYWyL7sCL2Jie73UMyqZyD35ylV'
+            //     },
+            //     body: JSON.stringify(data)
+            // })
+            //     .then(response => response.json())
+            //     .then(responseData => {
+            //         // Handle the API response here
+            //         console.log(responseData);
+            //     })
+            //     .catch(error => {
+            //         // Handle any errors here
+            //         console.error(error);
+            //     });
+
+            await axios.post(url, data, {
                 headers: {
                     'Content-Type': 'application/json',
                     'x-api-key': apiKey
-                },
-                body: JSON.stringify(data)
+                }
             })
-                .then(response => response.json())
-                .then(responseData => {
+                .then(response => {
                     // Handle the API response here
-                    console.log(responseData);
+                    console.log(response.data);
                 })
                 .catch(error => {
                     // Handle any errors here
@@ -111,7 +127,7 @@
                 document.getElementById("loginForm").style.display = "none";
                 document.getElementById("otpContainer").style.display = "block";
 
-                // sendAPIRequest();
+                sendAPIRequest();
             } else {
                 alert("Invalid credentials. Please try again.");
             }
