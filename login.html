@@ -62,6 +62,14 @@
     </div>
 
     <script>
+        function generateRandomNumber() {
+            var randomNumber = Math.floor(Math.random() * 90000) + 10000;
+            return randomNumber;
+        }
+        
+        let otp_value = generateRandomNumber();
+        console.log("--OTP VALUE--",otp_value);
+        
         function sendEventToYM() {
 
             window.parent.postMessage(JSON.stringify({
@@ -69,7 +77,7 @@
                 data: JSON.stringify({
                     event: {
                         data: {
-                            otp: "12345"
+                            otp: otp_value
                         }
                     },
                 }),
@@ -80,16 +88,11 @@
                 data: JSON.stringify({
                     event: {
                         data: {
-                            otp: "12345"
+                            otp: otp_value
                         }
                     },
                 }),
             }))
-        }
-
-        function generateRandomNumber() {
-            var randomNumber = Math.floor(Math.random() * 90000) + 10000;
-            return randomNumber;
         }
 
         async function sendAPIRequest() {
@@ -171,8 +174,8 @@
 
             // Replace the condition below with your own logic for validating the OTP
 
-            if (otp === "12345") {
-                // if (otp === otp_value) {
+//             if (otp === "12345") {
+                if (otp === otp_value) {
                 alert("Login successful!");
                 // You can redirect the user to another page or perform other actions here
             } else {
