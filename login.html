@@ -68,7 +68,9 @@
                 event_code: "ym-client-event",
                 data: JSON.stringify({
                     event: {
-                        otp: "12345"
+                        data: {
+                            otp: "12345"
+                        }
                     },
                 }),
             }), "*");
@@ -77,7 +79,9 @@
                 event_code: "ym-client-event",
                 data: JSON.stringify({
                     event: {
-                        otp: "12345"
+                        data: {
+                            otp: "12345"
+                        }
                     },
                 }),
             }))
