@@ -67,6 +67,9 @@
             let img = imageArr[i];
             let txt = textArr[i];
 
+            console.log(txt, "--TXT ARR--");
+            console.log(typeof txt, "--TXT ARR--");
+
             let e_code = "banner_promo_add_product";
             let e_data = textArr[i];
 
@@ -90,14 +93,17 @@
             // let e_code = "banner_promo_add_product"
             // let e_data = text
 
+            console.log(e_code, "--ECODE--");
+            console.log(e_data, "--EDATA--");
+
             window.parent.postMessage(JSON.stringify({
                 event_code: "ym-client-event",
                 data: JSON.stringify({
                     event: {
                         code: e_code,
                         data: e_data
-                    },
-                }),
+                    }
+                })
             }), "*");
 
             //             let msg = e_code + text
@@ -109,9 +115,10 @@
                     event: {
                         code: e_code,
                         data: e_data
-                    },
-                }),
-            }))
+                    }
+                })
+            }));
+
         }
 
 
